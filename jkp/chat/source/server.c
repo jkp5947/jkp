@@ -71,7 +71,6 @@ int main(void)
    int server_sockfd;
    int server_len;
    struct sockaddr_in server_address;
-   struct sockaddr_in client_address;
    int result;
    int cnt = 0;
    int nfds = 4;
@@ -79,6 +78,9 @@ int main(void)
    Client_data c_data;
    fd_set readfds, testfds;
    
+   linkedlist_init(&(global_data.c_list));
+   linkedlist_init(&(global_data.h_list));
+   linkedlist_init(&(global_data.r_list));
    server_sockfd = socket(AF_INET, SOCK_STREAM, 0);
    server_address.sin_family = AF_INET;
    server_address.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -111,19 +113,19 @@ int main(void)
          return 1;
       }
 
-      for (fd = 0; fd < FD_SETSIZE; fd++)
+      for (fd = 0; fd < nfds; fd++)
       {
          if (FD_ISSET(fd, &testfds))
          {
             if (fd == server_sockfd)
             {
-               c_data.ci.client_len = sizeof(client_address);
+               c_data.ci.client_len = sizeof(c_data.ci.client_address);
                c_data.ci.client_fd = accept(server_sockfd, 
-                     (struct sockaddr *)&client_address, 
+                     (struct sockaddr *)&(c_data.ci.client_address), 
                         &(c_data.ci.client_len));
                FD_SET(c_data.ci.client_fd, &readfds);
                nfds++;
-               send_list(&global_data, c_data.ci.client_fd);
+              // send_list(&global_data, c_data.ci.client_fd);
             }
             else
             {

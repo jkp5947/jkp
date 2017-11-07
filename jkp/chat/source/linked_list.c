@@ -52,7 +52,7 @@ void linkedlist_add(List *list, void *struct_data, int choice_flag)
       front = front->next;
    }
    front->next = nw;
-
+   printf("ADD SUCCESS\n");
 }
 
 //linked list 에서 원하는 데이터 찾기
