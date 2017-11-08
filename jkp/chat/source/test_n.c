@@ -4,19 +4,21 @@
 
 int main(void)
 {
-   /*
-   char Buf[1024]={0};
-   char buf[1024] = "abcdefghijklmnopqrstuvwxyz";
+   
+   char Buf[10]={0};
+   char buf[1024] = "1abcdefghijklmnopqrstuvwxyz";
    int a = 1;
    int num;
 
-   
+   fgets(Buf,sizeof(Buf),stdin);
+   printf("buf-%s\n",Buf);
+/*   
    sprintf(Buf, "%d|%s", a, buf);
    printf("BUF = %s\n",Buf);
    sscanf(Buf, "%d|%[^\n]", &num, buf);
    printf("num = %d\n",num);
    printf("str = %s\n",buf);
-   */
+   
 
    char buf1[10]={0};
    char buf2[10]={0};
@@ -41,6 +43,6 @@ int main(void)
    {
       printf("%c",buf2[i++]);
    }
-   printf("\n");
+   printf("\n");*/
    return 0;
 }

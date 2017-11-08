@@ -2,9 +2,8 @@
 
 Client_info ct; //클라이언트 정보(fd, 대화명)
 
-// 대화명을 생성한 후 접속자 목록과 비교하여
-// 대화명이 중복되는지 확인한다.
-char create_name(Client_info *ct, char *user_list[]);
+//아이디 생성.
+void create_name(Client_info *ct);
 
 //user_list와 메뉴를 화면에 디스플레이
 void display(Client_info *ct, char *user_list[]);

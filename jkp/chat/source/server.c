@@ -10,7 +10,7 @@ int recv_id(jkp_global *g_data, char *id, Client_data *save)
    if (find_fd == -1)
    {
       strncpy(save->ci.client_id, id, 10);
-      linkedlist_add(&(g_data->c_list), save, 0);
+     // linkedlist_add(&(g_data->c_list), save, 0);
       return 0;
    }
    else 
